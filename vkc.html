@@ -1,0 +1,228 @@
+<html class="no-js ng-scope" style="background-color: white" ng-controller="headerCtrl"><head>    <meta name="viewport" content="width=1024px,initial-scale=1">   <link rel="stylesheet" href="./vkc_files/vendor.7e0db4c3.css"> <link rel="stylesheet" href="./vkc_files/main.8a0a5aa3.css">   </head>
+<body style="background-color: white">  
+    <div ng-controller="featureCtrl" id="parentCtrlID" class="ng-scope"> 
+        <nav class="navbar navbar-default panel_heading_background ng-scope" role="navigation" ng-controller="headerNavBarhomeCtrl">
+    <div class="navbar-header">
+    <div class="collapse navbar-collapse in" collapse="isCollapsed" style="height: auto;">
+    </div>
+    </nav></div> <!--Here loaded the body --> 
+    <div id="serverResponseHandle"> <!-- uiView: --><div ui-view="" class="ng-scope"></div> <!-- uiView: leftNavbar --><div id="leftnavbar" ui-view="leftNavbar" class="ng-scope"><div class="h_6 ng-scope"></div>
+    <!-- Side bar over-->
+    </div>
+    </div> 
+    <div class="main-content">
+    <div class="page-content-area">
+    <div ng-if="!showPrePrint "class="screenhide ng-scope">        
+     <div class="watermark m_t_imp_0 ng-scope" ng-class="{'watermark_logo':isLogo}" ng-if="waterMark">
+    <div class="watermark_text watermak_padding" ng-class="{'watermark_text_logo':isLogo,'watermak_padding':!isLogo}" style="padding-top: 150px !important;">
+         <span ng-if="!isLogo" class="ng-binding ng-scope">VKaveri Cargo Services</span><!-- end ngIf: !isLogo -->
+    </div>
+    </div><!-- end ngIf: waterMark -->
+    <div class="col-sm-3 col-md-3 col-xs-3 logoimgforprint no-padding-left ng-scope" ng-controller="logoImgController">
+        <img ng-src="library/images/vkc.jpg" class="img-responsive image_logo" alt="Responsive image" src="./vkc_files/vkc.jpg">
+    </div>
+    <div ng-class="accPrevileges.DISPLAY_HEAD_OFFICE_ADDRESS_IN_PRINT ? ['col-sm-12','col-md-12','col-xs-12'] : ['col-sm-9','col-md-9','col-xs-9']" class="bold col-sm-9 col-md-9 col-xs-9">
+        <p>
+            <span class="pull-left col-sm-12">
+                <span class="printULine printHeader ng-binding">CHENNAI :-
+                    <!-- ngIf: fromBranch.address!==null && addressShowInPrint --><span class="printHeader ng-binding ng-scope" ng-if="fromBranch.address!==null &amp;&amp; addressShowInPrint"> BALAJI RESIDENCY, PILLER NO-54, FLOWER MARKET OPP, VEMURI KAVERI TRAVEL'S,</span><!-- end ngIf: fromBranch.address!==null && addressShowInPrint -->
+                    <!-- ngIf: fromBranchNumber --><span class="printHeader ng-binding ng-scope" ng-if="fromBranchNumber">Ph.No:8886600000</span><!-- end ngIf: fromBranchNumber -->
+                </span>
+            </span>
+        </p>
+        <br>
+    </div>
+    </div>
+    <div>
+    <div class="p_font_size15 h_310 m_b_0">
+    <!-- ngIf: cancelled_lr_msg -->
+    <table class="col-sm-12 bor_st_solid w_100_per">
+        <tbody>
+        <tr>
+            <td>
+                <table class="col-sm-12 table-bordered_detail width_100 bor_st_solid relative_position">
+                    <tbody><tr>
+                        <td class="bold width_10 ng-binding">LR Number</td>
+                        <td class="bold width_19 ng-binding" ng-bind-html="lr_number">CHE-CTRL/10123</td>
+                        <td class="width_11 ng-binding">From</td>
+                        <td class="width_13 ng-binding">Chennai</td>
+                        <td class="width_10 ng-binding">To</td>
+                        <td class="width_19 ng-binding">Hyderabad</td>
+                        <td class="width_10 ng-binding">Date</td>
+                        <td><input type="date" id="date" name="date"></td>
+                    </tr>
+                    <tr>
+                        <td class="bold ng-binding">LR Type</td>
+                        <td class="bold ng-binding">Paid</td>
+                        <td class="ng-binding">From Branch</td>
+                        <td class="ng-binding">CHENNAI</td>
+                        <td class="bold ng-binding">To Branch</td>
+                        <td class="bold ng-binding">HYDERABAD</td>
+                        <td>
+                            <div ng-if="!display_invoice_number" class="ng-binding ng-scope"> Manual GC No</div><!-- end ngIf: !display_invoice_number -->
+                            </span>
+                        </td>
+                        <td>
+                            <span ng-if="!privileges.cargoBookingWithOnlyWayBillGeneration" class="ng-binding ng-scope">
+                                N/A
+                            </span><!-- end ngIf: !privileges.cargoBookingWithOnlyWayBillGeneration -->
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="ng-binding">Consignor Name</td>
+                        <td><input type="text" placeholder="Name"></td>
+                        <td class="ng-binding">Mobile No</td>
+                        <td><input type="text" placeholder="0000000000"></td>
+                        <td class="ng-binding">Consignee Name</td>
+                        <td><input type="text" placeholder="Name"></td>
+                        <td class="ng-binding">Mobile No</td>
+                        <td><input type="text" placeholder="0000000000"></td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="col-sm-12 table-bordered_detail_followed width_100 bor_st_solid relative_position">
+                    <thead><td class="width_16 center ng-binding">Item Description</td>
+                        <td class="width_16 center ng-binding">Quantity</td>
+                        <td class="width_16 center ng-binding">Freight Charge  (₹) </td>
+                    </tr>
+                    </thead>
+                    
+                    <td>
+                        <table id="item-table" class="col-sm-12 table-bordered_detail_followed width_100 bor_st_solid relative_position">
+                          <thead>
+                            <tr>
+                              <td class="width_16 center ng-binding">Item Description</td>
+                              <td class="width_16 center ng-binding">Quantity</td>
+                              <td class="width_16 center ng-binding">Freight Charge (₹) </td>
+                              <td></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><input type="text" id="item-description-1" name="item-description-1" placeholder="COTTON BOX" style="text-align-last:end;"></td>
+                              <td><input type="number" id="quantity-1" name="quantity-1" placeholder="1" style="text-align-last:end;"></td>
+                              <td><input type="number" id="charges-1" name="charges-1" placeholder="1100.00" style="text-align-last:end;"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <button onclick="addNewItem()">Add Item</button>
+                      
+                        <script>
+                          let rowCount = 2;
+                          function addNewItem() {
+                            const itemTable = document.getElementById('item-table');
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                              <td><input type="text" id="item-description-${rowCount}" name="item-description-${rowCount}"></td>
+                              <td><input type="number" id="quantity-${rowCount}" name="quantity-${rowCount}"></td>
+                              <td><input type="number" id="charges-${rowCount}" name="charges-${rowCount}"></td>
+                              <td><button class="remove-item-btn" onclick="removeItem(this)">Remove</button></td>
+                            `;
+                            itemTable.appendChild(row);
+                            rowCount++;
+                          }
+                          function removeItem(element) {
+                            element.parentNode.parentNode.remove();
+                            rowCount--;
+                            reorderRows();
+                          }
+                          function reorderRows() {
+                            const rows = document.getElementById('item-table').rows;
+                            for (let i = 1; i < rows.length; i++) {
+                              const row = rows[i];
+                              const inputs = row.querySelectorAll('input');
+                              inputs[0].id = `item-description-${i}`;
+                              inputs[0].name = `item-description-${i}`;
+                              inputs[1].id = `quantity-${i}`;
+                              inputs[1].name = `quantity-${i}`;
+                              inputs[2].id = `charges-${i}`;
+                              inputs[2].name = `charges-${i}`;
+                            }
+                          }
+                          
+                          document.getElementById('booking-form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+                          });
+                        </script>
+
+
+                    <tr ng-if="!automatedCaroDetails &amp;&amp; !cargoDetailsWithVehicleTypeandFare" class="ng-scope">
+                        <td class="bold ng-binding" style="text-align-last:end;">Totals</td>
+                        <td ><input type="text" placeholder="1" class="redColor bold ng-binding"style="text-align-last:end; color: #ff0000;"></td>
+                        <td ><input type="text" placeholder="1100.00"class="redColor bold ng-binding" style="text-align-last:end; color: #ff0000;"></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ng-binding">Condition of the Goods</td>
+                        <td class="bold ng-binding">TBD</td>
+                        <td class="amount bold ng-binding" colspan="2">Net Amt Payable  (₹) </td>
+                        <td ><input type="text" placeholder="1100.00"class="bold" style="text-align-last:end; color: #ff0000;"></td>
+                        </td>
+                    </tr>
+                    <tr ng-if="!accPrevileges.INTERNATIONAL_DEFAULT_PRINT" class="ng-scope">
+                        <td class="ng-binding">Mode Of Transport</td>
+                        <td class="bold ng-binding">Road</td>
+                        <td class="amount ng-binding" colspan="2">Vehicle Number</td>
+                        <td><input type="text" placeholder="AP 00 AB 0000"class="bold"style="text-align-last:end;"></td>
+                    </tr>
+                    <tr>
+                        <td class="redColor bold ng-binding">Consignee Copy</td>
+                        <td class="h_60 text-center ng-binding" style="opacity: 0.4" colspan="2">Signature</td>
+                        <td class="amount bold ng-binding" colspan="2">Booked by CHE MANAGER</td>
+                        <!--<td ng-cloak class="amount redColor bold">{{"Booked_by" | translate}} {{booked_by}} {{"at" | translate}} {{travel_time}}</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+        <div class="col-sm-12 padding_left0 w_100_per ng-scope" ng-if="terms.status">
+            <div class="pull-left">
+                <strong class="ng-binding">Terms &amp; Conditions &nbsp;:&nbsp;</strong>
+            </div><br>
+            <div><span ng-bind-html="dataEditor" class="ng-binding"><ul>
+    <li>Parcels, Luggage are carried at owner's risk</li>
+    <li>Incase the Parcels are lost or damaged in transit the company will not be liable through every care shall be taken by the company for Safe Transportation of Parcels.</li>
+    <li>Contraband articles are not permitted to carry in the vehicle. The parcels owner will bear soleon checkup by Octrol, Excise and other Authorities.</li>
+    <li>We do not hold any other responsilbility on the late arrival of Parcel/Luggage</li>
+    <li>Transporter is not responsible for any charges imposed by Govt Agencies, Consigner/Consignee should pay for such expenses or fines</li>
+    <li>Consignor or Consignee should request the transporter for the vehicle number for updating Part-B of the eway bill.</li>
+    <li>Luggage/Parcel should be collected within 24Hrs of its arrival, falling which the Management is not responsible for the delivery.</li>
+    <li><strong>Dema Charge per day Rs.5/ per parcel after 7 days of receipt of the parcel. Consignment are not taken delivery within 30 days it will be auctioned without any intimation to the Consignor or Consignee</strong>.</li>
+    <li>Don't Book Cash, Glass Liquor, Jewels, Lottery, Explosive materials and other restricted items. If booked we are not responsible. Company is not responsible for any breakable items .It will be booked only on the Owner's risk.</li>
+    </ul>
+    </span></div>
+        </div><!-- end ngIf: terms.status -->
+    </div>
+    </div>
+    <div class="center">
+    <!-- ngIf: $index != no_of_times_list.length-1 --><span ng-if="$index != no_of_times_list.length-1" class="p_font_size30 ng-scope"> ✂</span><!-- end ngIf: $index != no_of_times_list.length-1 -->
+    <!-- ngIf: $index != no_of_times_list.length-1 --><span ng-if="$index != no_of_times_list.length-1" class="p_font_size30 ng-scope">-----------------------------------------------------------------------------------</span><!-- end ngIf: $index != no_of_times_list.length-1 -->
+    </div>
+    </div>
+    </div>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+    </table>
+</div>
+    </div>
+    </div>
+    </div></cargo-details></div> </div>  
+        <div ng-include=" 'views/footer.html' " class="ng-scope"><footer style="" class="col-sm-12 ng-scope"> 
+        <div style="background: #F2F2F2 ;margin-left: -15px;margin-right: -15px"> <hr style="border-top: dashed 1px white;margin-bottom: 6px !important"> 
+             <div style="height: 10px"></div> 
+        </div><!--First line is completed then come to second line of code   --> </footer> 
+        </a></div> </div> 
+         <style type="text/css">.panel_heading_background{background: #4693b8!important;}a.welcome{background-color: #4693b8!important;}.navbar_background_clr{background-color: #4693b8!important;}.panel-body .ng-scope a.active, #sidebar .panel-body .ng-scope a:hover{background-color: #f5f5f5 !important;color: #4693b8}</style>
+         <style type="text/css">.placeholder{font-weight: normal!important;}</style>
+         <style type="text/css">.LabelForm{font-size: 12px !important;}.labelTextSize{font-size: 12px !important;}</style>
+    </body>
+</html>
